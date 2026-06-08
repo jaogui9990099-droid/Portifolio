@@ -1,20 +1,74 @@
-﻿# Portfolio
+# Nextstars Portfolio
 
-Small systems projects focused on backend architecture, memory management and concurrent data structures.
+Portfolio: [github.com/jaogui9990099-droid/Portifolio](https://github.com/jaogui9990099-droid/Portifolio)
 
-This repository is intentionally split by language. Each project is self-contained and has its own build instructions.
+I am a 15-year-old game and backend developer with 5 years of programming experience, focused on multiplayer systems, game infrastructure, reverse engineering research, networking and Minecraft development.
 
-## Projects
+I work with Java, C, C++, Lua and Python across backend systems, APIs, launchers, protocols, automation tools and custom multiplayer servers. Most of my experience comes from game-related development, especially Minecraft systems and online multiplayer infrastructure.
+
+## Main Experience
+
+- Minecraft plugin development and server-side systems.
+- My Singing Monsters private server infrastructure.
+- Custom multiplayer backend systems using SmartFoxServer 2X.
+- Packet handling, protocol research and networking tools.
+- Server launchers, APIs and automation systems.
+- Linux/server environments and database-backed services.
+- Game modification systems, tooling and optimization.
+
+I have worked alongside teams, including collaboration with Sefonic on Minecraft-related projects and systems.
+
+## Main Projects
+
+| Project | Type | Description |
+| --- | --- | --- |
+| MainPlugin | Minecraft plugin | Server-side Minecraft gameplay/plugin project. |
+| Flashback | Minecraft plugin | Minecraft systems project focused on custom gameplay behavior. |
+| My Singing Monsters private server | Game infrastructure | Private server infrastructure, bridge work, SmartFoxServer 2X systems and protocol compatibility. |
+| SmartFoxServer 2X backend systems | Multiplayer backend | Practice and production-style multiplayer backend systems built around SFS2X APIs. |
+| LAN House Simulator | Practice game/backend | Practice project used to study scalable backend architecture and multiplayer service design. |
+
+## Portfolio Projects In This Repository
 
 | Project | Language | What it shows |
 | --- | --- | --- |
-| [Meridian](./meridian-java) | Java 21 / Spring Boot | REST API design, job scheduling, priority queues, retries, tests |
-| [Forge](./forge-c) | C11 | Arena, pool and slab allocators, manual memory management, CMake, unit tests |
-| [Nexus](./nexus-cpp) | C++20 | Concurrent map, LRU cache, memory pool, small key-value server demo |
+| [Meridian](./meridian-java) | Java 21 / Spring Boot | REST API design, job scheduling, priority queues, retries and tests. |
+| [Forge](./forge-c) | C11 | Arena, pool and slab allocators, manual memory management, CMake and unit tests. |
+| [Nexus](./nexus-cpp) | C++20 | Concurrent map, LRU cache, memory pool and a small key-value server demo. |
 
-## Notes
+## Technical Focus
 
-These are portfolio projects, not production libraries. The goal is to show how I structure code, isolate responsibilities, test behavior and build small systems from scratch.
+- Multiplayer networking
+- Packet handling and protocol systems
+- Backend architecture
+- Minecraft plugin development
+- Server launchers
+- APIs and automation systems
+- Reverse engineering research
+- Memory manipulation
+- Database systems
+- Linux/server environments
+- Game tooling and modding
+- Optimization and low-level tooling
 
-The Java project can be tested with Maven directly. The C and C++ projects require a configured compiler toolchain, such as GCC/Clang with Ninja or Visual Studio Build Tools on Windows.
+## Languages
 
+- Java
+- C
+- C++
+- Lua
+- Python
+
+## Spoken Languages
+
+- English
+- Portuguese
+
+## Interests
+
+- Multiplayer games
+- Backend engineering
+- Game security and reverse engineering research
+- Protocol systems
+- Server infrastructure
+- Game tooling and modding
