@@ -27,6 +27,18 @@ local function spend(player, cost)
     return true
 end
 
+local function reward(game, target)
+    if target.alive then
+        return ""
+    end
+    local gold = target.kind == "brute" and 5 or 3
+    local xp = target.kind == "brute" and 10 or 7
+    game.player.score = game.player.score + 10 + gold
+    game.player.gold = game.player.gold + gold
+    local leveled = entities.gain_xp(game.player, xp)
+    return leveled and " defeated " .. target.kind .. " and leveled up" or " defeated " .. target.kind
+end
+
 function abilities.move(game, dir)
     local delta = directions[dir]
     if not delta then
@@ -61,10 +73,7 @@ function abilities.strike(game, dir)
         return false, "no target"
     end
     local dealt = entities.damage(target, 6)
-    if not target.alive then
-        game.player.score = game.player.score + 10
-    end
-    return true, "dealt " .. dealt
+    return true, "dealt " .. dealt .. reward(game, target)
 end
 
 function abilities.dash(game, dir)
@@ -105,9 +114,7 @@ function abilities.blast(game)
         if enemy.alive and entities.distance(game.player, enemy) <= 2 then
             entities.damage(enemy, 4)
             hits = hits + 1
-            if not enemy.alive then
-                game.player.score = game.player.score + 10
-            end
+            reward(game, enemy)
         end
     end
     game.player.cooldowns.blast = 4
@@ -124,7 +131,19 @@ function abilities.shield(game)
     end
     game.player.armor = game.player.armor + 6
     game.player.cooldowns.shield = 4
-    return true
+    return true, "shielded"
+end
+
+function abilities.potion(game)
+    if game.player.potions <= 0 then
+        return false, "no potions"
+    end
+    if game.player.hp >= game.player.max_hp then
+        return false, "already full hp"
+    end
+    game.player.potions = game.player.potions - 1
+    entities.heal(game.player, 12)
+    return true, "used potion"
 end
 
 return abilities

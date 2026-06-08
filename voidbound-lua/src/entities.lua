@@ -20,6 +20,10 @@ function entities.player(x, y)
         max_ap = 3,
         armor = 0,
         score = 0,
+        gold = 0,
+        xp = 0,
+        level = 1,
+        potions = 1,
         cooldowns = { dash = 0, blast = 0, shield = 0 },
         alive = true,
     }
@@ -65,6 +69,25 @@ end
 
 function entities.heal(target, amount)
     target.hp = math.min(target.max_hp, target.hp + amount)
+end
+
+function entities.gain_xp(player, amount)
+    player.xp = player.xp + amount
+    local needed = player.level * 18
+    local leveled = false
+    while player.xp >= needed do
+        player.xp = player.xp - needed
+        player.level = player.level + 1
+        player.max_hp = player.max_hp + 4
+        player.hp = player.max_hp
+        if player.level % 2 == 0 then
+            player.max_ap = player.max_ap + 1
+        end
+        player.ap = player.max_ap
+        leveled = true
+        needed = player.level * 18
+    end
+    return leveled
 end
 
 function entities.reset_turn(unit)

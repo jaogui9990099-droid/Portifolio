@@ -29,9 +29,18 @@ Controls:
 - `Shift + WASD`: dash
 - `Space`: blast
 - `E`: shield
+- `Q`: use potion
 - `Enter`: wait
+- `H`: show/hide help
 - `R`: restart
 - `Esc`: quit
+
+How to win:
+
+1. Survive and clear three enemy waves.
+2. Use hazards, healing cells, gold and caches to stay alive.
+3. Kills give XP and gold. Level ups increase HP and sometimes action points.
+4. After wave 3 is clear, step on the purple portal to win.
 
 ## Run Terminal Version
 

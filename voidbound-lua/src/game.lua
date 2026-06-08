@@ -75,6 +75,17 @@ function game.apply_tile(state)
         entities.heal(state.player, 4)
         state.arena.grid[state.player.y][state.player.x] = "."
         state.log[#state.log + 1] = "recovered 4 hp"
+    elseif tile == "$" then
+        state.player.gold = state.player.gold + 8
+        state.player.score = state.player.score + 8
+        state.arena.grid[state.player.y][state.player.x] = "."
+        state.log[#state.log + 1] = "collected 8 gold"
+    elseif tile == "?" then
+        state.player.potions = state.player.potions + 1
+        state.player.gold = state.player.gold + 4
+        state.player.score = state.player.score + 12
+        state.arena.grid[state.player.y][state.player.x] = "."
+        state.log[#state.log + 1] = "opened a cache"
     elseif tile == ">" and state.wave >= 3 and alive_enemies(state.enemies) == 0 then
         state.over = true
         state.victory = true
@@ -96,6 +107,8 @@ function game.player_action(state, command, arg)
         ok, message = abilities.blast(state)
     elseif command == "shield" then
         ok, message = abilities.shield(state)
+    elseif command == "potion" then
+        ok, message = abilities.potion(state)
     elseif command == "wait" then
         state.player.ap = 0
         ok, message = true, "wait"

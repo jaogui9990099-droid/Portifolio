@@ -7,6 +7,8 @@ local tile = 42
 local ox = 42
 local oy = 82
 local message = "WASD move | Arrow keys strike | Space blast | Shift dash | E shield | Enter wait | R restart"
+local show_help = true
+local buttons = {}
 
 local colors = {
     bg = { 0.05, 0.06, 0.08 },
@@ -15,6 +17,8 @@ local colors = {
     wall = { 0.35, 0.38, 0.46 },
     hazard = { 0.76, 0.24, 0.32 },
     heal = { 0.22, 0.65, 0.40 },
+    gold = { 0.95, 0.72, 0.25 },
+    chest = { 0.62, 0.38, 0.20 },
     portal = { 0.42, 0.32, 0.82 },
     player = { 0.35, 0.62, 1.00 },
     enemy = { 1.00, 0.38, 0.30 },
@@ -40,6 +44,8 @@ local function draw_tile(x, y, kind)
     if kind == "#" then c = colors.wall end
     if kind == "^" then c = colors.hazard end
     if kind == "+" then c = colors.heal end
+    if kind == "$" then c = colors.gold end
+    if kind == "?" then c = colors.chest end
     if kind == ">" then c = colors.portal end
     love.graphics.setColor(c)
     love.graphics.rectangle("fill", px, py, tile - 3, tile - 3, 6, 6)
@@ -53,6 +59,16 @@ local function draw_tile(x, y, kind)
     elseif kind == ">" then
         love.graphics.setColor(0.75, 0.65, 1.0)
         love.graphics.circle("line", px + tile / 2, py + tile / 2, tile / 3)
+    elseif kind == "$" then
+        love.graphics.setColor(0.28, 0.19, 0.05)
+        love.graphics.circle("fill", px + tile / 2, py + tile / 2, 8)
+        love.graphics.setColor(1.0, 0.9, 0.45)
+        love.graphics.print("$", px + tile / 2 - 4, py + tile / 2 - 8)
+    elseif kind == "?" then
+        love.graphics.setColor(0.22, 0.12, 0.06)
+        love.graphics.rectangle("fill", px + 9, py + 14, tile - 22, tile - 24, 4, 4)
+        love.graphics.setColor(1.0, 0.82, 0.4)
+        love.graphics.print("?", px + tile / 2 - 4, py + tile / 2 - 9)
     end
 end
 
@@ -81,11 +97,13 @@ end
 
 function love.keypressed(key)
     if key == "r" then restart(); return end
+    if key == "h" then show_help = not show_help; return end
     if key == "escape" then love.event.quit(); return end
     if state.over then return end
 
     if key == "space" then action("blast"); return end
     if key == "e" then action("shield"); return end
+    if key == "q" then action("potion"); return end
     if key == "return" then action("wait"); return end
 
     local dir = direction_from_key(key)
@@ -100,7 +118,28 @@ function love.keypressed(key)
     end
 end
 
+local function button(label, x, y, w, h, fn)
+    love.graphics.setColor(0.15, 0.18, 0.24)
+    love.graphics.rectangle("fill", x, y, w, h, 8, 8)
+    love.graphics.setColor(0.31, 0.55, 1.0)
+    love.graphics.rectangle("line", x, y, w, h, 8, 8)
+    love.graphics.setColor(colors.text)
+    love.graphics.printf(label, x, y + 8, w, "center")
+    buttons[#buttons + 1] = { x = x, y = y, w = w, h = h, fn = fn }
+end
+
+function love.mousepressed(x, y, mouse_button)
+    if mouse_button ~= 1 then return end
+    for _, b in ipairs(buttons) do
+        if x >= b.x and y >= b.y and x <= b.x + b.w and y <= b.y + b.h then
+            b.fn()
+            return
+        end
+    end
+end
+
 function love.draw()
+    buttons = {}
     love.graphics.clear(colors.bg)
     love.graphics.setColor(colors.text)
     love.graphics.setFont(love.graphics.newFont(24))
@@ -131,16 +170,53 @@ function love.draw()
     local lines = {
         "Turn: " .. state.turn,
         "Wave: " .. state.wave,
+        "Level: " .. state.player.level .. "  XP: " .. state.player.xp .. "/" .. (state.player.level * 18),
         "HP: " .. state.player.hp .. "/" .. state.player.max_hp,
         "Armor: " .. state.player.armor,
         "AP: " .. state.player.ap .. "/" .. state.player.max_ap,
         "Score: " .. state.player.score,
+        "Gold: " .. state.player.gold,
+        "Potions: " .. state.player.potions,
         "Dash CD: " .. state.player.cooldowns.dash,
         "Blast CD: " .. state.player.cooldowns.blast,
         "Shield CD: " .. state.player.cooldowns.shield,
     }
     for i, line in ipairs(lines) do
         love.graphics.print(line, panel_x + 18, oy + 48 + i * 23)
+    end
+
+    love.graphics.setColor(colors.panel)
+    love.graphics.rectangle("fill", panel_x, oy + 318, 270, 196, 10, 10)
+    love.graphics.setColor(colors.text)
+    love.graphics.setFont(love.graphics.newFont(16))
+    love.graphics.print("Actions", panel_x + 18, oy + 336)
+    love.graphics.setFont(love.graphics.newFont(13))
+    button("Blast (Space)", panel_x + 18, oy + 370, 110, 36, function() action("blast") end)
+    button("Shield (E)", panel_x + 142, oy + 370, 110, 36, function() action("shield") end)
+    button("Potion (Q)", panel_x + 18, oy + 416, 110, 36, function() action("potion") end)
+    button("Wait (Enter)", panel_x + 142, oy + 416, 110, 36, function() action("wait") end)
+    button("Help (H)", panel_x + 18, oy + 462, 110, 36, function() show_help = not show_help end)
+    button("Restart (R)", panel_x + 142, oy + 462, 110, 36, restart)
+
+    if show_help then
+        love.graphics.setColor(0.02, 0.025, 0.035, 0.88)
+        love.graphics.rectangle("fill", 100, 118, 540, 316, 12, 12)
+        love.graphics.setColor(colors.text)
+        love.graphics.setFont(love.graphics.newFont(20))
+        love.graphics.print("How to play", 128, 144)
+        love.graphics.setFont(love.graphics.newFont(14))
+        local help = {
+            "Goal: survive 3 waves, clear enemies, then step on the purple portal.",
+            "WASD moves. Arrow keys attack adjacent enemies.",
+            "Hold Shift + WASD to dash up to 3 tiles.",
+            "Space casts Blast around you. E gives armor. Q drinks a potion.",
+            "Red tiles hurt. Green tiles heal. Gold and chests give rewards.",
+            "Kills give XP/gold. Level ups increase HP and sometimes AP.",
+            "Press H to hide/show this help."
+        }
+        for i, line in ipairs(help) do
+            love.graphics.print(line, 128, 180 + i * 30)
+        end
     end
 
     if state.over then

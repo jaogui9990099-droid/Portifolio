@@ -28,6 +28,10 @@ function map.create(width, height, seed)
                 grid[y][x] = "^"
             elseif roll < 0.18 then
                 grid[y][x] = "+"
+            elseif roll < 0.205 then
+                grid[y][x] = "$"
+            elseif roll < 0.225 then
+                grid[y][x] = "?"
             else
                 grid[y][x] = "."
             end
