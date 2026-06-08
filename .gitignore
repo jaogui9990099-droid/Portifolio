@@ -18,6 +18,16 @@ _deps/
 *.jar
 *.war
 
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.coverage
+
+# Lua
+luac.out
+
 # IDEs
 .idea/
 .vscode/

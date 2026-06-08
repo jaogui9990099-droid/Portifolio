@@ -35,6 +35,8 @@ I have worked alongside teams, including collaboration with Sefonic on Minecraft
 | [Meridian](./meridian-java) | Java 21 / Spring Boot | REST API design, job scheduling, priority queues, retries and tests. |
 | [Forge](./forge-c) | C11 | Arena, pool and slab allocators, manual memory management, CMake and unit tests. |
 | [Nexus](./nexus-cpp) | C++20 | Concurrent map, LRU cache, memory pool and a small key-value server demo. |
+| [Taskflow](./taskflow-python) | Python | Task automation CLI with JSON persistence, filtering, stats and tests. |
+| [Voidbound Arena](./voidbound-lua) | Lua | Turn-based arena game prototype with procedural maps, AI, abilities and tests. |
 
 ## Technical Focus
 
