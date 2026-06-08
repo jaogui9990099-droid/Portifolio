@@ -1,0 +1,30 @@
+# Build outputs
+build/
+cmake-build-*/
+out/
+target/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+Testing/
+_deps/
+
+# Java / Maven
+.mvn/wrapper/maven-wrapper.jar
+*.class
+*.jar
+*.war
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
