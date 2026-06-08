@@ -19,6 +19,14 @@ It is designed as a practical productivity/backend exercise: tasks are stored lo
 From this folder:
 
 ```bash
+python -m taskflow.gui
+```
+
+The graphical app uses Tkinter and stores tasks in `~/.taskflow/tasks.json`.
+
+CLI usage:
+
+```bash
 python -m taskflow.cli add "Ship portfolio update" --priority high --tag github --due 2026-06-10
 python -m taskflow.cli list
 python -m taskflow.cli stats

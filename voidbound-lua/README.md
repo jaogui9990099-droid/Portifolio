@@ -14,7 +14,26 @@ The player fights through waves on a procedurally generated grid using action po
 - Wave scaling.
 - Small test runner with gameplay assertions.
 
-## Run
+## Run Visual Version
+
+Install LOVE2D, then run this folder:
+
+```bash
+love .
+```
+
+Controls:
+
+- `WASD`: move
+- Arrow keys: strike
+- `Shift + WASD`: dash
+- `Space`: blast
+- `E`: shield
+- `Enter`: wait
+- `R`: restart
+- `Esc`: quit
+
+## Run Terminal Version
 
 You need Lua 5.4 or LuaJIT.
 
