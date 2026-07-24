@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Nextstars portfolio: game, backend, networking, modding, and low-level systems projects in Java, C, C++, Lua, and Python."
+    />
+    <title>Nextstars | Developer Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Nextstars home">
+        <span class="brand-mark">N</span>
+        <span>
+          <strong>Nextstars</strong>
+          <small>Game and backend developer</small>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch color mode" data-theme-toggle>
+        <span class="theme-toggle__icon"></span>
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <img class="hero-image" src="assets/portfolio-hero.png" alt="" />
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Nextstars portfolio</p>
+          <h1>Game systems, private servers, and backend engineering.</h1>
+          <p class="hero-copy">
+            I am a 15-year-old game and backend developer with 5 years of programming experience,
+            focused on multiplayer infrastructure, protocol research, Minecraft systems, modding,
+            and custom server tools.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">View projects</a>
+            <a class="button button-secondary" href="https://github.com/Nextstars1" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro-band" id="work">
+        <div>
+          <p class="eyebrow">Main experience</p>
+          <h2>Built around real multiplayer problems.</h2>
+        </div>
+        <p>
+          My work crosses Java, C, C++, Lua, and Python across APIs, launchers, custom multiplayer
+          servers, automation tools, reverse engineering research, and game modification systems.
+        </p>
+      </section>
+
+      <section class="section">
+        <div class="focus-grid">
+          <article>
+            <h3>Minecraft systems</h3>
+            <p>Plugin development, custom gameplay behavior, server-side systems, and collaboration on production-style projects.</p>
+          </article>
+          <article>
+            <h3>MSM private server</h3>
+            <p>Private server infrastructure, bridge work, SmartFoxServer 2X systems, and protocol compatibility.</p>
+          </article>
+          <article>
+            <h3>Networking research</h3>
+            <p>Packet handling, protocol systems, backend architecture, and tooling for online multiplayer environments.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section-heading">
+          <p class="eyebrow">Repository projects</p>
+          <h2>Five projects, five angles.</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project-card project-card-large">
+            <div class="project-topline">
+              <span>Java 21 / Spring Boot</span>
+              <strong>Meridian</strong>
+            </div>
+            <h3>Priority job scheduling REST API</h3>
+            <p>
+              A backend service for submitting jobs, listing them by status or priority, cancelling
+              pending work, tracking execution attempts, and reading scheduler stats.
+            </p>
+            <ul>
+              <li>Domain, repository, and scheduler ports</li>
+              <li>Priority queue behavior and retries</li>
+              <li>JUnit and Awaitility tests</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <div class="project-topline">
+              <span>C11</span>
+              <strong>Forge</strong>
+            </div>
+            <h3>Memory allocation toolkit</h3>
+            <p>Arena, pool, and slab allocators focused on layout, ownership, reset behavior, and predictable allocation.</p>
+          </article>
+
+          <article class="project-card">
+            <div class="project-topline">
+              <span>C++20</span>
+              <strong>Nexus</strong>
+            </div>
+            <h3>In-memory key-value server</h3>
+            <p>Concurrent map, LRU cache, memory pool, and a small server facade with throughput and cache stats.</p>
+          </article>
+
+          <article class="project-card">
+            <div class="project-topline">
+              <span>Python</span>
+              <strong>Taskflow</strong>
+            </div>
+            <h3>Task automation tool</h3>
+            <p>CLI and Tkinter task manager with JSON persistence, filters, due dates, stats, and unit-tested domain behavior.</p>
+          </article>
+
+          <article class="project-card">
+            <div class="project-topline">
+              <span>Lua</span>
+              <strong>Voidbound Arena</strong>
+            </div>
+            <h3>Turn-based arena prototype</h3>
+            <p>Procedural maps, action-point combat, abilities, hazards, enemy AI, wave scaling, and gameplay tests.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section skills-section" id="skills">
+        <div class="section-heading">
+          <p class="eyebrow">Technical focus</p>
+          <h2>Comfortable from gameplay logic down to memory tools.</h2>
+        </div>
+        <div class="skill-cloud">
+          <span>Java</span>
+          <span>C</span>
+          <span>C++</span>
+          <span>Lua</span>
+          <span>Python</span>
+          <span>Minecraft plugins</span>
+          <span>SmartFoxServer 2X</span>
+          <span>Packet handling</span>
+          <span>Backend APIs</span>
+          <span>Linux servers</span>
+          <span>Game tooling</span>
+          <span>Optimization</span>
+          <span>Reverse engineering research</span>
+          <span>Database systems</span>
+        </div>
+      </section>
+
+      <section class="contact-band" id="contact">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Want to see the code?</h2>
+          <p>Explore the portfolio repository and the rest of my work on GitHub.</p>
+        </div>
+        <a class="button button-primary" href="https://github.com/Nextstars1" rel="noreferrer">Open GitHub</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Made by Nextstars</span>
+      <a href="https://github.com/Nextstars1/Portifolio" rel="noreferrer">Portfolio repo</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
